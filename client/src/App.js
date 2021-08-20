@@ -1,5 +1,5 @@
 import './App.css'
-import Navigation from './components/Navigation'
+import Navigation from './components/NavBar'
 import { useState, useEffect } from 'react'
 
 
@@ -18,7 +18,6 @@ const App = () => {
   return (
     <div className='App'>
       <Navigation user={user} />
-      <h1>Workout Tracker</h1>
       {/* <h2>
         {user ? `${user.username} is logged in.` : null}
       </h2> */}
