@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 const COLORS = {
   primary: {
@@ -50,4 +50,4 @@ const OutlineButton = styled(ButtonBase)`
   }
 `;
 
-export default Button;
+export default Button
