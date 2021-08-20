@@ -3,6 +3,8 @@
 ### User Model
 - User can sign up
 - User can login/logout
+* has_many :workouts
+* has_many :exercises
 #### Stretch Goals
 - User can add profile
 - User can edit profile
@@ -14,6 +16,8 @@
 - User can enter the date
 - User can input weight
 - User can view all exercises per date
+* belongs_to :user
+* has_many :exercises
 #### Stretch Goals 
 - User can view the week and click into each date to view
 
@@ -24,5 +28,5 @@
 - User can delete exercise
 - User can view exercise
 - User can add calories
-- User can edit calories
-- User can delete calories
+* belongs_to :user
+* belongs_to :workout
