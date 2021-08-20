@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import { useState, useEffect } from 'react'
 
-function App() {
+const App = () => {
+  const [user, setUser] = useState(null)
+
+  useEffect(() => {
+    const fetchUser = () => {
+      fetch('/me')
+        .then(resp => resp.json())
+        .then(data => setUser(data))
+    }
+    fetchUser()
+  }, [user])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Workout Tracker</h1>
+      {/* <h2>
+        {user ? `${user.username} is logged in.` : null}
+      </h2> */}
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
