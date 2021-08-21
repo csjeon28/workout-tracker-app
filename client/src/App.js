@@ -1,8 +1,9 @@
-import './App.css'
+// import './App.css'
 import { Switch, Route, useHistory } from 'react-router-dom'
 import Home from './components/Home'
 import Login from './components/Login'
 import Logout from './components/Logout'
+// import NavBar from './components/NavBar'
 // import LoginForm from './components/LoginForm'
 import Signup from './components/Signup'
 import { useState, useEffect } from 'react'
@@ -50,10 +51,8 @@ const App = () => {
 
   return (
     <div className='App'>
-      {/* <NavBar user={user} /> */}
-      <h2>
-        {currentUser ? `${currentUser.username} is logged in.` : null}
-      </h2>
+      {/* <NavBar /> */}
+      {currentUser ? `${currentUser.username} is logged in.` : null}
       <Switch>
         <Route exact path='/' component={Login} />
         <Route exact path='/home'>
@@ -75,6 +74,5 @@ const App = () => {
     </div>
   )
 }
-
 
 export default App
