@@ -1,12 +1,10 @@
 import styled from 'styled-components'
 import { MainContainer, Input, InputForm, HorizontalLine, LoginButton, SignupButton } from '../styles'
-// import LoginForm from './LoginForm'
-// import SignupForm from './SignupForm'
 import { useState } from 'react'
-// import Errors from './Errors'
+import { useHistory } from 'react-router-dom'
 
-const Login = ({ errors, handleUserLoginAndSignup }) => {
-    // const [showLogin, setShowLogin] = useState(true)
+const Login = ({ handleUserLoginAndSignup }) => {
+    const { push } = useHistory()
     const [state, setState] = useState({})
 
     const handleChange = (e) => {
@@ -36,14 +34,11 @@ const Login = ({ errors, handleUserLoginAndSignup }) => {
             <InputForm onSubmit={handleSubmit}>
                 <Input onChange={handleChange} type='text' placeholder='Username' />
                 <Input onChange={handleChange} type='password' placeholder='Password' />
-                <LoginButton type='submit' content='Log In'></LoginButton>
+                <LoginButton type='submit' content='Log In' onClick={() => push('/login')}></LoginButton>
             </InputForm>
-            {/* <ButtonContainer>
-            </ButtonContainer> */}
             <HorizontalLine />
-            {/* <SignupForm onLogin={onLogin} /> */}
             <SignUpText>New User?</SignUpText>
-            <SignupButton content='Sign Up'>Sign Up</SignupButton>
+            <SignupButton type='submit' content='Sign Up' onClick={() => push('/signup')}></SignupButton>
         </MainContainer>
     )
 }
