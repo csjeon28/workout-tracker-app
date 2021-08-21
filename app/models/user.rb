@@ -1,8 +1,8 @@
 class User < ApplicationRecord
+    has_secure_password
+
     has_many :workouts
     has_many :exercises
-
-    has_secure_password
 
     PASSWORD_REQ = /\A
         (?=.{8,}) # Minimum 8 characters
