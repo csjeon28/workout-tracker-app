@@ -1,4 +1,6 @@
 import { useState } from 'react'
+// import styled from 'styled-components'
+import { MainContainer, Input, InputForm, HorizontalLine } from '../styles'
 // import Errors from './Errors'
 
 const Signup = ({ handleUserLoginAndSignup }) => {
@@ -26,21 +28,22 @@ const Signup = ({ handleUserLoginAndSignup }) => {
     }
 
     return (
-        <div>
+        <MainContainer>
+            <HorizontalLine />
             {/* <Errors errors={errors} /> */}
-            <form handleSubmit={handleSubmit}>
+            <InputForm handleSubmit={handleSubmit}>
                 <label>Username:</label>
-                <input onChange={onChange} name="username" type="text" />
+                <Input onChange={onChange} name="username" type="text" />
                 <br />
                 <label>Password:</label>
-                <input onChange={onChange} name="password" type="password" />
+                <Input onChange={onChange} name="password" type="password" />
                 <br />
                 <label>Password Confirmation:</label>
-                <input onChange={onChange} name="password_confirmation" type="password" />
+                <Input onChange={onChange} name="password_confirmation" type="password" />
                 <br />
-                <input type="submit" value="Signup" />
-            </form>
-        </div>
+                <Input type="submit" value="Signup" />
+            </InputForm>
+        </MainContainer>
     )
 }
 
