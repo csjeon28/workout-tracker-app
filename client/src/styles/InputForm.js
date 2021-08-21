@@ -1,12 +1,14 @@
 import styled from 'styled-components'
 
-const InputForm = styled.div`
+const InputForm = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  height: 20%;
+  height: 50%;
   width: 100%;
+  margin: 1rem 0 2rem 0;
+  align-items: center;
 `;
 
 export default InputForm
