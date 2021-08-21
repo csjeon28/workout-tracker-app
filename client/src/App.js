@@ -1,28 +1,80 @@
 import './App.css'
-import Navigation from './components/NavBar'
+import { Switch, Route, useHistory } from 'react-router-dom'
+import Home from './components/Home'
+import Login from './components/Login'
+import Logout from './components/Logout'
+// import LoginForm from './components/LoginForm'
+import Signup from './components/Signup'
 import { useState, useEffect } from 'react'
 
-
 const App = () => {
-  const [user, setUser] = useState(null)
+  const history = useHistory()
+  const [currentUser, setCurrentUser] = useState(null)
+  const [errors, setErrors] = useState([])
+
+  // useEffect(() => {
+  //   fetch('/me')
+  //     .then((resp) => {
+  //       if (resp.ok) {
+  //         resp.json()
+  //           .then(user => setUser(user))
+  //       }
+  //     })
+  // }, [])
+  // if (!user) return <Login onLogin={setUser} />
+
+  const handleUserLoginAndSignup = (data) => {
+    data.errors ? setErrors(data.errors) : setCurrentUser(data.user)
+    if (!data.errors) {
+      history.push('/')
+      setErrors([])
+    }
+  }
+
+  const checkSessionId = () => {
+    fetch('/me')
+      .then(resp => resp.json())
+      .then(data => setCurrentUser(data.user))
+  }
+
+  // const fetchWorkouts = () => {
+  //   fetch('/workouts')
+  //   .then(resp => resp.json())
+  //   .then(data => setWorkouts(data.workouts))
+  // }
 
   useEffect(() => {
-    const fetchUser = () => {
-      fetch('/me')
-        .then(resp => resp.json())
-        .then(data => setUser(data.user))
-    }
-    fetchUser()
-  }, [user])
+    // fetchWorkouts()
+    checkSessionId()
+  }, [])
 
   return (
     <div className='App'>
-      <Navigation user={user} />
-      {/* <h2>
-        {user ? `${user.username} is logged in.` : null}
-      </h2> */}
+      {/* <NavBar user={user} /> */}
+      <h2>
+        {currentUser ? `${currentUser.username} is logged in.` : null}
+      </h2>
+      <Switch>
+        <Route exact path='/' component={Login} />
+        <Route exact path='/home'>
+          <Home errors={errors} currentUser={currentUser} />
+        </Route>
+        <Route exact path='/signup'>
+          <Signup handleUserLoginAndSignup={handleUserLoginAndSignup} errors={errors} />
+        </Route>
+        <Route exact path='/login'>
+          <Login handleUserLoginAndSignup={handleUserLoginAndSignup} errors={errors} />
+        </Route>
+        <Route exact path='/logout'>
+          <Logout setCurrentUser={setCurrentUser} />
+        </Route>
+        {/* <Route path='/workout'>
+          <NewWorkout user={user} />
+        </Route> */}
+      </Switch>
     </div>
   )
 }
+
 
 export default App
