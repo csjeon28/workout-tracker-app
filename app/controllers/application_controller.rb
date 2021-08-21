@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-    include ActionController::Serialization
+    include ActionController::Cookies
 
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
