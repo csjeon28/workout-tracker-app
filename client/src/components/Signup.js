@@ -1,17 +1,16 @@
 import { useState } from 'react'
-// import styled from 'styled-components'
-import { MainContainer, Input, InputForm, HorizontalLine } from '../styles'
-// import Errors from './Errors'
+// import { useHistory } from 'react-router-dom'
+import Errors from './Errors'
 
-const Signup = ({ handleUserLoginAndSignup }) => {
-
+const Signup = ({ errors, handleUserLoginAndSignup }) => {
+    // const history = useHistory()
     const [state, setState] = useState({})
 
     const onChange = (e) => {
         setState({ ...state, [e.target.name]: e.target.value })
     }
 
-    const handleSubmit = (e) => {
+    const onSubmit = (e) => {
         e.preventDefault()
 
         const config = {
@@ -25,25 +24,26 @@ const Signup = ({ handleUserLoginAndSignup }) => {
         fetch('/users', config)
             .then(res => res.json())
             .then(data => handleUserLoginAndSignup(data))
+        // !errors ? history.push('/') : history.push('/signup')
     }
 
     return (
-        <MainContainer>
-            <HorizontalLine />
-            {/* <Errors errors={errors} /> */}
-            <InputForm handleSubmit={handleSubmit}>
+        <div className='signup-container'>
+            <hr />
+            <form className='signup-form' onSubmit={onSubmit}>
                 <label>Username:</label>
-                <Input onChange={onChange} name="username" type="text" />
+                <input onChange={onChange} name="username" type="text" />
                 <br />
                 <label>Password:</label>
-                <Input onChange={onChange} name="password" type="password" />
+                <input onChange={onChange} name="password" type="password" />
                 <br />
                 <label>Password Confirmation:</label>
-                <Input onChange={onChange} name="password_confirmation" type="password" />
+                <input onChange={onChange} name="password_confirmation" type="password" />
                 <br />
-                <Input type="submit" value="Signup" />
-            </InputForm>
-        </MainContainer>
+                <input type="submit" value="Signup" />
+            </form>
+            <Errors errors={errors} />
+        </div>
     )
 }
 
