@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     def create
       user = User.create!(user_params)
       session[:user_id] = user.id
-      render json: user, status: :created
+      render json: {user: user}, status: :created
     end
   
     # GET /users/:id (users#show)
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       if session[:user_id]
         user = User.find(session[:user_id])
         user_json = UserSerializer.new(user).serializable_hash
-        render json: {user: user_json}, status: :ok
+        render json: {user: user}, status: :ok
       end
     end
   
