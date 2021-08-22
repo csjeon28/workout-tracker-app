@@ -1,10 +1,7 @@
-// import './App.css'
+import './App.css'
 import { Switch, Route, useHistory } from 'react-router-dom'
 import Home from './components/Home'
 import Login from './components/Login'
-import Logout from './components/Logout'
-// import NavBar from './components/NavBar'
-// import LoginForm from './components/LoginForm'
 import Signup from './components/Signup'
 import { useState, useEffect } from 'react'
 
@@ -12,17 +9,6 @@ const App = () => {
   const history = useHistory()
   const [currentUser, setCurrentUser] = useState(null)
   const [errors, setErrors] = useState([])
-
-  // useEffect(() => {
-  //   fetch('/me')
-  //     .then((resp) => {
-  //       if (resp.ok) {
-  //         resp.json()
-  //           .then(user => setUser(user))
-  //       }
-  //     })
-  // }, [])
-  // if (!user) return <Login onLogin={setUser} />
 
   const handleUserLoginAndSignup = (data) => {
     data.errors ? setErrors(data.errors) : setCurrentUser(data.user)
@@ -51,12 +37,11 @@ const App = () => {
 
   return (
     <div className='App'>
-      {/* <NavBar /> */}
-      {currentUser ? `${currentUser.username} is logged in.` : null}
+      {/* <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} /> */}
       <Switch>
         <Route exact path='/' component={Login} />
         <Route exact path='/home'>
-          <Home errors={errors} currentUser={currentUser} />
+          <Home currentUser={currentUser} setCurrentUser={setCurrentUser} />
         </Route>
         <Route exact path='/signup'>
           <Signup handleUserLoginAndSignup={handleUserLoginAndSignup} errors={errors} />
@@ -64,9 +49,7 @@ const App = () => {
         <Route exact path='/login'>
           <Login handleUserLoginAndSignup={handleUserLoginAndSignup} errors={errors} />
         </Route>
-        <Route exact path='/logout'>
-          <Logout setCurrentUser={setCurrentUser} />
-        </Route>
+        <Route exact path='/logout' />
         {/* <Route path='/workout'>
           <NewWorkout user={user} />
         </Route> */}
