@@ -1,20 +1,20 @@
-import styled from 'styled-components'
-import { MainContainer, Input, InputForm, HorizontalLine, LoginButton, SignupButton } from '../styles'
+// import styled from 'styled-components'
+// import { MainContainer, Input, InputForm, HorizontalLine, LoginButton, SignupButton } from '../styles'
 import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
-const Login = ({ handleUserLoginAndSignup }) => {
-    const { push } = useHistory()
+const Login = ({ errors, handleUserLoginAndSignup }) => {
+    const history = useHistory()
     const [state, setState] = useState({})
 
-    const handleChange = (e) => {
+    const onChange = (e) => {
         setState({ ...state, [e.target.name]: e.target.value })
     }
 
-    const handleSubmit = (e) => {
+    const onSubmit = (e) => {
         e.preventDefault()
 
-        let config = {
+        const config = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -24,31 +24,27 @@ const Login = ({ handleUserLoginAndSignup }) => {
         }
 
         fetch('/login', config)
-            .then(res => res.json())
+            .then(resp => resp.json())
             .then(data => handleUserLoginAndSignup(data))
+        errors ? history.push('/login') : history.push('/workouts')
     }
 
     return (
-        <MainContainer>
-            <LogoText>Workout Tracker</LogoText>
-            <InputForm onSubmit={handleSubmit}>
-                <Input onChange={handleChange} type='text' placeholder='Username' />
-                <Input onChange={handleChange} type='password' placeholder='Password' />
-                <LoginButton type='submit' content='Log In' onClick={() => push('/login')}></LoginButton>
-            </InputForm>
-            <HorizontalLine />
-            <SignUpText>New User?</SignUpText>
-            <SignupButton type='submit' content='Sign Up' onClick={() => push('/signup')}></SignupButton>
-        </MainContainer>
+        <div className='login-container'>
+            <form className='login-form' onSubmit={onSubmit}>
+                <h2 className='login-text'>Workout Tracker</h2>
+                <input className='login-input' placeholder='Username' onChange={onChange} name='username' type='text' />
+                <br />
+                <input className='login-input' placeholder='Password' onChange={onChange} name='password' type='password' />
+                <br />
+                <input className='login-button' type='submit' value='Login' />
+                <br />
+                <hr />
+                <label className='signup-text'>New User?</label>
+                <input className='signup-button' type='submit' value='Sign Up'></input>
+            </form>
+        </div>
     )
 }
-
-const LogoText = styled.h2`
-  margin: 3rem 0 2rem 0;
-`;
-
-const SignUpText = styled.h4`
-  margin: 2rem 0 2rem 0;
-`;
 
 export default Login
