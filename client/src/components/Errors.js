@@ -3,10 +3,10 @@ import React from 'react'
 const Errors = ({ errors }) => {
 
     const renderErrors = () => {
-        return errors.map(error => <p> {error} </p>)
+        return errors.map((error, index) => { return (<li key={index}> {error} </li>) })
     }
     return (
-        <div className="errors">
+        <div className='errors'>
             {renderErrors()}
         </div>
     )

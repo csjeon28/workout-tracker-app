@@ -10,7 +10,6 @@ const NavBar = ({ currentUser, setCurrentUser }) => {
         let config = {
             method: 'DELETE'
         }
-
         fetch('/logout', config)
         setCurrentUser(null)
         history.push('/login')
@@ -18,17 +17,16 @@ const NavBar = ({ currentUser, setCurrentUser }) => {
 
     return (
         <Wrapper>
-            {currentUser ? `${currentUser.username} is logged in.` : null}
             <Logo>
-                <Link to='/'>Home</Link>
+                {currentUser ? `${currentUser.username} is logged in.` : null}
             </Logo>
             <Nav>
-                <Button as={Link} to='/signup'>
+                {/* <Button as={Link} to='/signup'>
                     Sign Up
-                </Button>
-                <Button as={Link} to='/login' variant='outline'>
+                    </Button>
+                    <Button as={Link} to='/login' variant='outline'>
                     Log In
-                </Button>
+                </Button> */}
                 <Button as={Link} to='/logout' variant='outline' onClick={handleLogoutClick}>
                     Logout
                 </Button>
@@ -45,7 +43,7 @@ const Wrapper = styled.header`
 `;
 
 const Logo = styled.h1`
-  font-size: 3rem;
+  font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.4rem;
   color: white;

@@ -2,13 +2,15 @@
 // import { MainContainer, Input, InputForm, HorizontalLine, LoginButton, SignupButton } from '../styles'
 import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import Errors from './Errors'
 
 const Login = ({ errors, handleUserLoginAndSignup }) => {
     const history = useHistory()
     const [state, setState] = useState({})
 
     const onChange = (e) => {
-        setState({ ...state, [e.target.name]: e.target.value })
+        const { name, value } = e.target
+        setState({ ...state, [name]: value })
     }
 
     const onSubmit = (e) => {
@@ -38,11 +40,13 @@ const Login = ({ errors, handleUserLoginAndSignup }) => {
                 <input className='login-input' placeholder='Password' onChange={onChange} name='password' type='password' />
                 <br />
                 <input className='login-button' type='submit' value='Login' />
+                {/* <input className='login-button' type='submit' value='Login' onClick={() => history.push('/userhome')} /> */}
                 <br />
                 <hr />
                 <label className='signup-text'>New User?</label>
-                <input className='signup-button' type='submit' value='Sign Up'></input>
+                <input className='signup-button' type='submit' value='Sign Up' onClick={() => history.push('/signup')} />
             </form>
+            <Errors errors={errors} />
         </div>
     )
 }
