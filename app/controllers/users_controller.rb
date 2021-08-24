@@ -1,25 +1,26 @@
 class UsersController < ApplicationController
-    skip_before_action :authorize, only: :create
+    skip_before_action :authorize
+    # skip_before_action :authorize, only: [:create, :show, :index]
 
     def index
-      user = User.all
-      render json: user, status: :ok
+      users = User.all
+      render json: users, include: [:workouts], status: :ok
     end
 
     # POST /users (users#create)
     def create
       user = User.create!(user_params)
       session[:user_id] = user.id
-      render json: user, status: :created
+      render json: {user: user, workouts: user.workouts}, status: :created
     end
   
     # GET /users/:id (users#show)
     def show
       if session[:user_id]
         user = User.find(session[:user_id])
-        user_json = UserSerializer.new(user).serializable_hash
-        workout_json = WorkoutSerializer.new(user.workouts).serializable_hash
-        render json: {user: user_json, workouts: workout_json}, status: :ok
+        # user_json = UserSerializer.new(user).serializable_hash
+        # workout_json = WorkoutSerializer.new(user.workouts).serializable_hash
+        render json: user, status: :ok
       end
     end
   
