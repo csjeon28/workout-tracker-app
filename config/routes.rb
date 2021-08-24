@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :users, only: [:create, :index]
-  resources :workouts, only: [:create, :index]
+  resources :users
+  resources :workouts
+  resources :exercises
 
   get '/me', to: 'users#show'
 
