@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 
-const Logout = ({ setCurrentUser, setWorkouts }) => {
+const Logout = ({ currentUser, setCurrentUser }) => {
     const history = useHistory()
 
     useEffect(() => {
@@ -14,13 +14,14 @@ const Logout = ({ setCurrentUser, setWorkouts }) => {
 
     const handleLogout = () => {
         setCurrentUser(null)
-        setWorkouts([])
-        history.push('/login')
+        setTimeout(() => {
+            history.push('/login')
+        }, 3000)
     }
 
     return (
         <div>
-            <h1>Logged Out</h1>
+            <h1>Logging Out</h1>
         </div>
     )
 }
