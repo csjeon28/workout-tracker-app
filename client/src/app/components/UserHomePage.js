@@ -3,7 +3,7 @@ import WorkoutList from './WorkoutList'
 
 const UserHomePage = ({ workouts, setWorkouts, currentUser, setCurrentUser }) => {
 
-    const handleDeleteWorkout = (id) => {
+    const onDeleteWorkout = (id) => {
         const patchedWorkouts = workouts.filter(workout => workout.id !== id)
         setWorkouts(patchedWorkouts)
     }
@@ -12,7 +12,7 @@ const UserHomePage = ({ workouts, setWorkouts, currentUser, setCurrentUser }) =>
         <div>
             <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
             <h1>Your Workout Tracker</h1>
-            <WorkoutList onDeleteWorkout={handleDeleteWorkout} workouts={workouts} />
+            <WorkoutList onDeleteWorkout={onDeleteWorkout} workouts={workouts} />
         </div>
     )
 }
