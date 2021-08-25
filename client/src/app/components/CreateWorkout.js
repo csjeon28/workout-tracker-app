@@ -1,13 +1,11 @@
 import { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+// import { useHistory } from 'react-router-dom'
+import Errors from './Errors'
 
-const CreateWorkout = () => {
-    const history = useHistory()
+const CreateWorkout = ({ errors, handleNewWorkout }) => {
+    // const history = useHistory()
 
-    const [workout, setWorkout] = useState({
-        date: '',
-        weight: ''
-    })
+    const [workout, setWorkout] = useState({})
 
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -16,33 +14,55 @@ const CreateWorkout = () => {
 
     const handleCreateWorkout = (e) => {
         e.preventDefault()
-        const newWorkout = {
-            date: workout.date,
-            weight: workout.weight
-        }
-        fetch('/workouts', {
+        // const newWorkout = {
+        //     date: workout.date,
+        //     weight: workout.weight
+        // }
+        //FIGURE OUT WHY FETCH WORKOUTS ISNT WORKING AND WHY I CANT
+        //POST WORKOUTS TO /WORKOUTS (DEFINITELY A SYNTAX ERROR)
+        const config = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(newWorkout)
-        })
-            .then(() => {
-                history.push('/userhomepage')
-            })
-            .catch((error) => console.log(error))
+            body: JSON.stringify(workout)
+        }
+        fetch('/workouts', config)
+            .then(resp => resp.json())
+            .then(data => console.log(data))
+        // .then(data => handleNewWorkout(data.workout))
+        // !errors ? history.push('/workouts/new') : history.push('/userhomepage')
     }
 
     return (
-        <form onSubmit={handleCreateWorkout}>
-            <label>Date</label>
-            <input name='date' type='text' onChange={handleChange} value={workout.date} />
-            <label>Weight</label>
-            <input name='weight' type='text' onChange={handleChange} value={workout.weight} />
-            <button>Add Workout</button>
-        </form>
+        <div>
+            <Errors errors={errors} />
+            <form onSubmit={handleCreateWorkout}>
+                <label>Date</label>
+                <input name='date' type='text' onChange={handleChange} />
+                {/* <input name='date' type='text' onChange={handleChange} value={workout.date} /> */}
+                <label>Weight</label>
+                <input name='weight' type='text' onChange={handleChange} />
+                {/* <input name='weight' type='text' onChange={handleChange} value={workout.weight} /> */}
+                <button>Add Workout</button>
+            </form>
+        </div>
     )
 
 }
 
 export default CreateWorkout
+
+
+// const config = {
+//     method: 'POST',
+//     headers: {
+//         'Content-Type': 'application/json',
+//         'Accept': 'application/json'
+//     },
+//     body: JSON.stringify(workout)
+// }
+// fetch('/workouts', config)
+//     .then(res => res.json())
+//     .then(data => handleNewWorkout(data))
+// !errors ? history.push('/userhomepage') : history.push('/workouts')

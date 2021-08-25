@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    skip_before_action :authorize
+    skip_before_action :authorize, only: [:create]
     # skip_before_action :authorize, only: [:create, :show, :index]
 
     def index
@@ -11,7 +11,8 @@ class UsersController < ApplicationController
     def create
       user = User.create!(user_params)
       session[:user_id] = user.id
-      render json: {user: user, workouts: user.workouts}, status: :created
+      render json: {user: user}, status: :created
+      # render json: {user: user, workouts: user.workouts}, status: :created
     end
   
     # GET /users/:id (users#show)
@@ -20,7 +21,7 @@ class UsersController < ApplicationController
         user = User.find(session[:user_id])
         # user_json = UserSerializer.new(user).serializable_hash
         # workout_json = WorkoutSerializer.new(user.workouts).serializable_hash
-        render json: user, status: :ok
+        render json: {user: user, workouts: user.workouts}, status: :ok
       end
     end
   

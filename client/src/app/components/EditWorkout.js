@@ -47,9 +47,11 @@ const EditWorkout = () => {
     return (
         <form onSubmit={handleEditWorkout}>
             <label>Date</label>
-            <input name='date' type='text' onChange={handleChange} value={workout.date} />
+            <input name='date' type='text' onChange={handleChange} />
+            {/* <input name='date' type='text' onChange={handleChange} value={workout.date} /> */}
             <label>Weight</label>
-            <input name='weight' type='text' onChange={handleChange} value={workout.weight} />
+            <input name='weight' type='text' onChange={handleChange} />
+            {/* <input name='weight' type='text' onChange={handleChange} value={workout.weight} /> */}
             <button>Edit Workout</button>
         </form>
     )

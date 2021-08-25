@@ -1,6 +1,6 @@
 class WorkoutSerializer < ActiveModel::Serializer
   attributes :id, :date, :weight, :exercises
-  # belongs_to :user, serializer: :user
+  belongs_to :user, serializer: :user
 
   def exercises
     self.object.exercises.map do |exercise_obj|

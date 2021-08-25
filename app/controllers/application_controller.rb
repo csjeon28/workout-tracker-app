@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::API
     # include ActionController::Cookies
-    include ActionController::Serialization
+    # include ActionController::Serialization
     rescue_from ActiveRecord::RecordInvalid, with: :invalid_record
     before_action :authorize
   

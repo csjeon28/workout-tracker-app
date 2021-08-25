@@ -88,7 +88,7 @@ function App() {
                     <Logout currentUser={currentUser} setCurrentUser={setCurrentUser} setWorkouts={setWorkouts} />
                 </Route>
                 <Route exact path='/workouts/new'>
-                    <CreateWorkout handleNewWorkout={handleNewWorkout} />
+                    <CreateWorkout handleNewWorkout={handleNewWorkout} errors={errors} />
                 </Route>
                 <Route exact path='/workouts/:id/edit'>
                     <EditWorkout />
