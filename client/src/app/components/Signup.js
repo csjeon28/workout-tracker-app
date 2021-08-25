@@ -31,6 +31,7 @@ const Signup = ({ errors, handleUserLoginAndSignup }) => {
     return (
         <div className='signup-container'>
             <hr />
+            <p>Sign up to track your workouts each day!</p>
             <form className='signup-form' onSubmit={onSubmit}>
                 <label>Create Username:</label>
                 <input onChange={onChange} name='username' type='text' />
