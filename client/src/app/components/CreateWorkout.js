@@ -1,10 +1,7 @@
 import { useState } from 'react'
-// import { useHistory } from 'react-router-dom'
 import Errors from './Errors'
 
-const CreateWorkout = ({ errors, handleNewWorkout }) => {
-    // const history = useHistory()
-
+const CreateWorkout = ({ errors, setWorkouts, handleUserLoginAndSignup, workouts }) => {
     const [workout, setWorkout] = useState({})
 
     const handleChange = (e) => {
@@ -14,12 +11,6 @@ const CreateWorkout = ({ errors, handleNewWorkout }) => {
 
     const handleCreateWorkout = (e) => {
         e.preventDefault()
-        // const newWorkout = {
-        //     date: workout.date,
-        //     weight: workout.weight
-        // }
-        //FIGURE OUT WHY FETCH WORKOUTS ISNT WORKING AND WHY I CANT
-        //POST WORKOUTS TO /WORKOUTS (DEFINITELY A SYNTAX ERROR)
         const config = {
             method: 'POST',
             headers: {
@@ -29,9 +20,13 @@ const CreateWorkout = ({ errors, handleNewWorkout }) => {
         }
         fetch('/workouts', config)
             .then(resp => resp.json())
-            .then(data => console.log(data))
-        // .then(data => handleNewWorkout(data.workout))
-        // !errors ? history.push('/workouts/new') : history.push('/userhomepage')
+            .then(data => {
+                if (!data.error) {
+                    handleUserLoginAndSignup(data)
+                    console.log(data)
+                    setWorkouts([...workouts, data.workout])
+                }
+            })
     }
 
     return (
@@ -39,10 +34,10 @@ const CreateWorkout = ({ errors, handleNewWorkout }) => {
             <Errors errors={errors} />
             <form onSubmit={handleCreateWorkout}>
                 <label>Date</label>
-                <input name='date' type='text' onChange={handleChange} />
+                <input name='date' id='date' type='text' onChange={handleChange} />
                 {/* <input name='date' type='text' onChange={handleChange} value={workout.date} /> */}
                 <label>Weight</label>
-                <input name='weight' type='text' onChange={handleChange} />
+                <input name='weight' id='weight' type='text' onChange={handleChange} />
                 {/* <input name='weight' type='text' onChange={handleChange} value={workout.weight} /> */}
                 <button>Add Workout</button>
             </form>
