@@ -57,6 +57,10 @@ const Signup = ({ errors, handleUserLoginAndSignup }) => {
                 <input onChange={onChange} name='password_confirmation' type='password' />
                 <br />
                 <input type='submit' value='Signup' />
+                <br />
+                <hr />
+                <label>Already have an account?</label>
+                <input type='submit' value='Log In' onClick={() => history.push('/login')} />
             </form>
             <Errors errors={errors} />
         </div>
