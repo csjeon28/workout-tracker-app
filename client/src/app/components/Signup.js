@@ -31,7 +31,21 @@ const Signup = ({ errors, handleUserLoginAndSignup }) => {
     return (
         <div className='signup-container'>
             <hr />
-            <p>Sign up to track your workouts each day!</p>
+            <h2>Sign up to track your workouts each day!</h2>
+            <hr />
+            <br />
+            <ol>Sign-In Requirements:
+                <li>Username must be at least 5 characters</li>
+                <li>Password must contain:
+                    <ul>
+                        <li>at least 1 number</li>
+                        <li>at least 1 lowercase letter</li>
+                        <li>at least 1 uppercase letter</li>
+                        <li>at least 1 symbol</li>
+                        <li>Minimum 8 characters</li>
+                    </ul>
+                </li>
+            </ol>
             <form className='signup-form' onSubmit={onSubmit}>
                 <label>Create Username:</label>
                 <input onChange={onChange} name='username' type='text' />
