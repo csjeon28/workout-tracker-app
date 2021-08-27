@@ -14,10 +14,12 @@ class SessionsController < ApplicationController
 
     # DELETE /logout (sessions#destroy)
     def destroy
-        if session[:user_id]
-            session.delete :user_id
-        else
-            render json: {errors: ["You are not logged in"]}, status: :unauthorized
-        end
+        # if session[:user_id]
+        #     session.delete :user_id
+        # else
+        #     render json: {errors: ["You are not logged in"]}, status: :unauthorized
+        # end
+        session.delete :user_id
+        head :no_content
     end
 end

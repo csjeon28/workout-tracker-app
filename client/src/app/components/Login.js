@@ -26,7 +26,6 @@ const Login = ({ errors, handleUserLoginAndSignup }) => {
         fetch('/login', config)
             .then(resp => resp.json())
             .then(data => handleUserLoginAndSignup(data))
-        errors ? history.push('/login') : history.push('/userhomepage')
     }
 
     return (
@@ -38,7 +37,6 @@ const Login = ({ errors, handleUserLoginAndSignup }) => {
                 <input className='login-input' placeholder='Password' onChange={onChange} name='password' type='password' />
                 <br />
                 <input className='login-button' type='submit' value='Login' />
-                {/* <input className='login-button' type='submit' value='Login' onClick={() => history.push('/userhome')} /> */}
                 <br />
                 <hr />
                 <label className='signup-text'>New User?</label>

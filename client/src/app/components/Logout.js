@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 
-const Logout = ({ currentUser, setCurrentUser }) => {
+const Logout = ({ setCurrentUser }) => {
     const history = useHistory()
 
     useEffect(() => {
@@ -16,7 +16,7 @@ const Logout = ({ currentUser, setCurrentUser }) => {
         setCurrentUser(null)
         setTimeout(() => {
             history.push('/login')
-        }, 3000)
+        }, 2000)
     }
 
     return (

@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :workouts
+  attributes :id, :username, :workouts, :exercises
 
   def workouts
     self.object.workouts.map do |workout_obj|

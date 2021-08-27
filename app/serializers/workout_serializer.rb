@@ -1,5 +1,5 @@
 class WorkoutSerializer < ActiveModel::Serializer
-  attributes :id, :date, :weight, :exercises
+  attributes :id, :date, :weight, :exercises, :user_id
   belongs_to :user, serializer: :user
 
   def exercises

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import Errors from './Errors'
 
+// const Signup = ({ setCurrentUser }) => {
 const Signup = ({ errors, handleUserLoginAndSignup }) => {
     const history = useHistory()
     const [state, setState] = useState({})
@@ -23,9 +24,8 @@ const Signup = ({ errors, handleUserLoginAndSignup }) => {
             body: JSON.stringify(state)
         }
         fetch('/users', config)
-            .then(res => res.json())
+            .then(resp => resp.json())
             .then(data => handleUserLoginAndSignup(data))
-        !errors ? history.push('/login') : history.push('/signup')
     }
 
     return (

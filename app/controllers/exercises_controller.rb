@@ -11,7 +11,7 @@ class ExercisesController < ApplicationController
     def create
         exercise = @current_user.exercises.build(exercise_params)
         if exercise.save!
-            render json: exercise, status: 201
+            render json: {exercises: exercise}, status: 201
         end
     end
 

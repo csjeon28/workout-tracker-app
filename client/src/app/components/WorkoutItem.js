@@ -9,21 +9,18 @@ const WorkoutItem = ({ workout, onDeleteWorkout, editWorkout, editing }) => {
             .then(() => {
                 onDeleteWorkout(workout.id)
             })
-            .catch((error) => console.log(error))
     }
 
     return (
-        <div key={workout.id}>
+        <div>
+            {/* <div key={workout.id}> */}
             <h3>Date:{workout.date}</h3>
             <h4>Weight:{workout.weight}</h4>
 
             {editing ? (null
             ) : (
-                <button
-                    onClick={() => { editWorkout(workout) }}
-                >Edit</button>
+                <button onClick={() => { editWorkout(workout) }}>Edit</button>
             )}
-
             <button onClick={performDeleteWorkout}>Remove</button>
         </div>
     )
