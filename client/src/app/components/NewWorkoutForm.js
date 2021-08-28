@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
 
 const NewWorkoutForm = ({ addWorkout }) => {
-    const history = useHistory()
+
     const [form, setForm] = useState({})
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -12,7 +11,6 @@ const NewWorkoutForm = ({ addWorkout }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         addWorkout(form)
-        history.push('/userhomepage')
     }
 
     return (
