@@ -5,6 +5,8 @@ import Login from './components/Login'
 import Signup from './components/Signup'
 import Logout from './components/Logout'
 import Home from './components/Home'
+// import WorkoutsList from './components/WorkoutsList'
+// import EditWorkoutForm from './components/EditWorkoutForm'
 // import CreateWorkout from './components/CreateWorkout'
 // import EditWorkout from './components/EditWorkout'
 // import CreateExercise from './components/CreateExercise'
@@ -103,11 +105,13 @@ function App() {
                 <Route exact path='/logout' >
                     <Logout setCurrentUser={setCurrentUser} />
                 </Route>
-                <Route exact path='/workouts/new'>
+                <Route exact path='/workouts'>
+                    {/* <WorkoutsList /> */}
                     {/* <CreateWorkout currentUser={currentUser} workouts={workouts} setWorkouts={setWorkouts} /> */}
                     {/* <CreateWorkout currentUser={currentUser} handleNewWorkout={handleNewWorkout} workouts={workouts} setWorkouts={setWorkouts} /> */}
                 </Route>
                 <Route exact path='/workouts/:id'>
+                    {/* <EditWorkoutForm /> */}
                     {/* <EditWorkout setWorkouts={setWorkouts} /> */}
                 </Route>
                 {/* <Route exact path='/exercises/new'>
