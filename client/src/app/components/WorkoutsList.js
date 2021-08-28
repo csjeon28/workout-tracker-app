@@ -21,7 +21,8 @@ const WorkoutsList = () => {
         }
         fetch('/workouts', config)
             .then(resp => resp.json())
-            .then(() => setWorkouts([...workouts, workout]))
+            .then(data => setWorkouts([...workouts, data.workout]))
+        // debugger
     }
     // const workoutList = workouts.map((workout, index) => <WorkoutLink key={index} workout={workout} />)
     // const workoutList = workouts.map((workout, index) => <Workout key={index} workout={workout} workouts={workouts} setWorkouts={setWorkouts} />)
