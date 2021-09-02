@@ -1,37 +1,35 @@
 class UsersController < ApplicationController
-    # skip_before_action :authorize, only: [:create]
     # skip_before_action :authorize, only: [:create, :show, :index]
+    # before_action :authorize, only: [:show]
+    skip_before_action :authorize, only: [:create, :index]
 
+    #---------GET /users (users#index)---------
     def index
-      # if session[:user_id]
-      users = User.all
-      render json: users, status: :ok
-      # render json: users, include: [:workouts], status: :ok
-      # end
+      @users = User.all
+      render json: @users
     end
 
-    # POST /users (users#create)
+    #--------GET /users/:id (users#show)---------
+    def show
+      user = User.find_by(id: session[:user_id])
+      if user
+        render json: {user: user, workouts: user.workouts, exercises: user.exercises}, status: :ok
+      else
+        render json: {errors: ["Not Authorized"]}, status: :unauthorized
+      end
+    end
+
+    #--------POST /users (users#create)---------
     def create
       user = User.create!(user_params)
       session[:user_id] = user.id
-      render json: user, status: :created
-      # render json: {users: user, workouts: user.workouts}, status: :created
-    end
-  
-    # GET /users/:id (users#show)
-    def show
-      if session[:user_id]
-        # byebug
-        user = User.find_by(id: session[:user_id])
-        # render json: user, status: :ok
-        render json: {user: user, workouts: user.workouts}, status: :ok
-      end
+      render json: {user: user, workouts: user.workouts, exercises: user.exercises}, status: :created
     end
   
     private
   
     def user_params
-      params.require(:user).permit(:username, :password, :password_confirmation)
+      params.permit(:username, :password, :password_confirmation)
     end
   
   end
