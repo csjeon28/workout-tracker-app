@@ -1,65 +1,32 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { Button } from '../styles'
-import { useHistory } from 'react-router-dom'
+import { Button, Logo } from '../styles'
 
-const NavBar = ({ currentUser, setCurrentUser }) => {
-    const history = useHistory()
+const NavBar = ({ currentUser }) => {
 
-    const handleLogoutClick = () => {
-        let config = {
-            method: 'DELETE'
-        }
-        fetch('/logout', config)
-        setCurrentUser(null)
-        history.push('/login')
-    }
-
-    return (
-        <Wrapper>
-            <Logo>
-                {currentUser ? `${currentUser.username} is logged in.` : null}
-            </Logo>
-            <Nav>
-                {/* <Button as={Link} to='/signup'>
-                    Sign Up
-                    </Button>
-                    <Button as={Link} to='/login' variant='outline'>
-                    Log In
-                </Button> */}
-                <Button as={Link} to='/logout' variant='outline' onClick={handleLogoutClick}>
-                    Logout
-                </Button>
-            </Nav>
-        </Wrapper>
-    )
+  return (
+    <Wrapper>
+      <Nav>
+        <Logo>{currentUser ? `Signed in as: ${currentUser.username}` : null}</Logo>
+        <Button as={Link} to='/login' variant='outline'>Switch User?</Button>
+        <Button as={Link} to='/logout' variant='fill'>Log Out</Button>
+      </Nav>
+    </Wrapper>
+  )
 }
 
-const Wrapper = styled.header`
+const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 8px;
-`;
-
-const Logo = styled.h1`
-  font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.4rem;
-  color: white;
-  margin: 0;
-  line-height: 1;
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
+  flex-direction: column;
+  letter-spacing: 0.1rem;
 `;
 
 const Nav = styled.nav`
   display: flex;
-  gap: 4px;
-  position: absolute;
+  gap: 5px;
   right: 8px;
 `;
 
