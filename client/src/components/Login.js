@@ -1,8 +1,8 @@
-// import styled from 'styled-components'
-// import { MainContainer, Input, InputForm, HorizontalLine, LoginButton, SignupButton } from '../styles'
 import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import Errors from './Errors'
+import styled from 'styled-components'
+import { MainContainer, Input, InputForm, HorizontalLine, LoginButton, SignupButton } from '../styles'
 
 const Login = ({ errors, handleUserLoginAndSignup }) => {
     const history = useHistory()
@@ -28,27 +28,33 @@ const Login = ({ errors, handleUserLoginAndSignup }) => {
         fetch('/login', config)
             .then(resp => resp.json())
             .then(data => handleUserLoginAndSignup(data))
-        errors ? history.push('/login') : history.push('/workouts')
     }
 
     return (
-        <div className='login-container'>
-            <form className='login-form' onSubmit={onSubmit}>
-                <h2 className='login-text'>Workout Tracker</h2>
-                <input className='login-input' placeholder='Username' onChange={onChange} name='username' type='text' />
+        <MainContainer>
+            <InputForm onSubmit={onSubmit}>
+                <LogoText>Workout Tracker</LogoText>
+                <Input placeholder='Username' onChange={onChange} name='username' type='text' />
                 <br />
-                <input className='login-input' placeholder='Password' onChange={onChange} name='password' type='password' />
+                <Input placeholder='Password' onChange={onChange} name='password' type='password' />
                 <br />
-                <input className='login-button' type='submit' value='Login' />
-                {/* <input className='login-button' type='submit' value='Login' onClick={() => history.push('/userhome')} /> */}
+                <LoginButton type='submit' content='Log In' />
                 <br />
-                <hr />
-                <label className='signup-text'>New User?</label>
-                <input className='signup-button' type='submit' value='Sign Up' onClick={() => history.push('/signup')} />
-            </form>
+                <HorizontalLine />
+                <SignUpText>New User?</SignUpText>
+                <SignupButton type='submit' content='Sign Up' onClick={() => history.push('/signup')} />
+            </InputForm>
             <Errors errors={errors} />
-        </div>
+        </MainContainer>
     )
 }
+
+const LogoText = styled.h2`
+  margin: 3rem 0 2rem 0;
+`;
+
+const SignUpText = styled.h4`
+  margin: 2rem 0 2rem 0;
+`;
 
 export default Login
