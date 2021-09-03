@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-// import ExerciseList from './ExerciseList'
+import ExerciseList from './ExerciseList'
 import EditWorkoutForm from './EditWorkoutForm'
 
 const Workout = ({ workout, workouts, setWorkouts }) => {
@@ -25,6 +25,8 @@ const Workout = ({ workout, workouts, setWorkouts }) => {
                 {editing ? <EditWorkoutForm workouts={workouts} setWorkouts={setWorkouts} workout={workout} setEditing={setEditing} />
                     : <button onClick={() => setEditing(true)}>Edit</button>}
                 <button onClick={() => deleteWorkout(workout.id)}>Delete</button>
+                {/* FIGURE OUT HOW TO ADD EXERCISES TO WORKOUT PAGE */}
+                {/* <button onClick={() => <ExerciseList />}>Add Exercise</button> */}
             </div>
         </div>
     )
