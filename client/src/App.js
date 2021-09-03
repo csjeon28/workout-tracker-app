@@ -1,90 +1,103 @@
-// import './App.css'
-// import { Switch, Route, useHistory } from 'react-router-dom'
-// import UserHome from './components/UserHome'
-// import Login from './components/Login'
-// import Signup from './components/Signup'
-// import Logout from './components/Logout'
-// import Workouts from './components/Workouts'
-// // import CreateWorkout from './components/CreateWorkout'
-// import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
+import { Switch, Route, useHistory } from 'react-router-dom'
+import UserHomePage from './components/UserHomePage'
+import Login from './components/Login'
+import Signup from './components/Signup'
+import Logout from './components/Logout'
+import Home from './components/Home'
+import ExerciseList from './components/ExerciseList'
 
-// function App() {
-//   const history = useHistory()
-//   const [currentUser, setCurrentUser] = useState(null)
-//   const [errors, setErrors] = useState([])
-//   const [workouts, setWorkouts] = useState([])
+function App() {
+    const history = useHistory()
+    const [currentUser, setCurrentUser] = useState(null)
+    const [errors, setErrors] = useState([])
+    // const [workouts, setWorkouts] = useState([])
+    // const [exercises, setExercises] = useState([])
 
-//   const handleUserLoginAndSignup = (data) => {
-//     data.errors ? setErrors(data.errors) : setCurrentUser(data.user)
-//     if (!data.errors) {
-//       history.push('/userhome')
-//       setErrors([])
-//     }
-//   }
+    const handleUserLoginAndSignup = (data) => {
+        data.errors ? setErrors(data.errors) : setCurrentUser(data.user)
+        if (!data.errors) {
+            history.push('/userhomepage')
+            setErrors([])
+        }
+    }
 
-//   const fetchWorkouts = () => {
-//     fetch('/workouts')
-//       .then(resp => resp.json())
-//       .then(data => setWorkouts(data))
-//   }
+    // const handleNewWorkout = (data) => {
+    //     // debugger;
+    //     data.errors ? setErrors(data.errors) : setWorkouts([...workouts, data.workout])
+    //     if (!data.errors) {
+    //         history.push('/userhomepage')
+    //         setErrors([])
+    //     }
+    // }
 
-//   // const fetchUserWorkouts = () => {
-//   //   fetch('/me')
-//   //     .then(resp => resp.json())
-//   //     .then(data => setUserWorkouts(data))
-//   // }
+    // const handleNewExercise = (data) => {
+    //     data.errors ? setErrors(data.errors) : setExercises([...exercises, data])
+    //     if (!data.errors) {
+    //         history.push('/userhomepage')
+    //         setErrors([])
+    //     }
+    // }
 
-//   // const setUserWorkouts = (data) => {
-//   //   setCurrentUser(data)
-//   //   setWorkouts(data.workouts)
-//   // }
+    const stateInit = () => {
+        // fetchWorkouts()
+        checkSessionId()
+    }
 
-//   const handleCreateWorkout = (data) => {
-//     data.errors ? setErrors(data.errors) : setWorkouts([...workouts, data])
-//     if (!data.errors) {
-//       history.push('/workouts')
-//       setErrors([])
-//     }
-//   }
+    // const fetchWorkouts = () => {
+    //     fetch('/workouts')
+    //         .then(resp => resp.json())
+    //         // .then(data => console.log(data))
+    //         .then(data => setWorkouts(data))
+    // }
 
-//   const checkSessionId = () => {
-//     fetch('/me')
-//       .then(resp => resp.json())
-//       // .then(data => console.log(data.user))
-//       .then(data => setCurrentUser(data.user))
-//   }
+    // const fetchExercises = () => {
+    //     fetch('/exercises')
+    //         .then(resp => resp.json())
+    //         // .then(data => console.log(data))
+    //         .then(data => setExercises(data.exercises))
+    // }
 
-//   useEffect(() => {
-//     fetchWorkouts()
-//     // fetchUserWorkouts()
-//     checkSessionId()
-//   }, [])
+    const checkSessionId = () => {
+        fetch('/me')
+            .then(resp => resp.json())
+            .then(data => {
+                setCurrentUser(data)
+            })
+    }
 
-//   return (
-//     <div className='App'>
-//       <Switch>
-//         <Route exact path='/' component={UserHome} />
-//         <Route exact path='/userhome'>
-//           <UserHome currentUser={currentUser} setCurrentUser={setCurrentUser} workouts={workouts} setWorkouts={setWorkouts} />
-//         </Route>
-//         <Route exact path='/signup'>
-//           <Signup handleUserLoginAndSignup={handleUserLoginAndSignup} errors={errors} />
-//         </Route>
-//         <Route exact path='/login'>
-//           <Login handleUserLoginAndSignup={handleUserLoginAndSignup} errors={errors} />
-//         </Route>
-//         <Route exact path='/logout' >
-//           <Logout currentUser={currentUser} setCurrentUser={setCurrentUser} setWorkouts={setWorkouts} />
-//         </Route>
-//         <Route exact path='/workouts'>
-//           <Workouts handleCreateWorkout={handleCreateWorkout} currentUser={currentUser} workouts={workouts} setWorkouts={setWorkouts} />
-//         </Route>
-//         {/* <Route exact path='/workouts/new'>
-//           <CreateWorkout handleCreateWorkout={handleCreateWorkout} currentUser={currentUser} errors={errors} />
-//         </Route> */}
-//       </Switch>
-//     </div>
-//   )
-// }
+    useEffect(stateInit, [])
 
-// export default App
+    return (
+        <div className='App'>
+            <Switch>
+                <Route exact path='/' component={Home} />
+                <Route exact path='/home' component={Home} />
+                <Route exact path='/userhomepage'>
+                    <UserHomePage currentUser={currentUser} setCurrentUser={setCurrentUser} />
+                </Route>
+                <Route exact path='/signup'>
+                    <Signup handleUserLoginAndSignup={handleUserLoginAndSignup} errors={errors} />
+                </Route>
+                <Route exact path='/login'>
+                    <Login handleUserLoginAndSignup={handleUserLoginAndSignup} errors={errors} />
+                </Route>
+                <Route exact path='/logout' >
+                    <Logout setCurrentUser={setCurrentUser} />
+                </Route>
+                <Route exact path='/workouts'>
+                </Route>
+                <Route exact path='/workouts/:id'>
+                </Route>
+                <Route exact path='/exercises'>
+                    <ExerciseList currentUser={currentUser} setCurrentUser={setCurrentUser} />
+                </Route>
+                <Route exact path='/exercises/:id'>
+                </Route>
+
+            </Switch>
+        </div>
+    )
+}
+
+export default App
