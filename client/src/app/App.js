@@ -20,7 +20,6 @@ function App() {
     // const [exercises, setExercises] = useState([])
 
     const handleUserLoginAndSignup = (data) => {
-        // debugger;
         data.errors ? setErrors(data.errors) : setCurrentUser(data.user)
         if (!data.errors) {
             history.push('/userhomepage')
@@ -67,10 +66,8 @@ function App() {
     const checkSessionId = () => {
         fetch('/me')
             .then(resp => resp.json())
-            // .then(data => console.log(data))
             .then(data => {
-                setCurrentUser(data.user)
-                // setWorkouts(data.workouts)
+                setCurrentUser(data)
             })
     }
 
@@ -78,48 +75,29 @@ function App() {
 
     return (
         <div className='App'>
-            {/* <NavBar currentUser={currentUser} /> */}
             <Switch>
                 <Route exact path='/' component={Home} />
                 <Route exact path='/home' component={Home} />
                 <Route exact path='/userhomepage'>
-                    {/* <UserHomePage currentUser={currentUser} setCurrentUser={setCurrentUser} workouts={workouts} setWorkouts={setWorkouts} /> */}
-                    {/* <UserHomePage
-                        errors={errors}
-                        // handleUserLoginAndSignup={handleUserLoginAndSignup}
-                        handleNewWorkout={handleNewWorkout}
-                        currentUser={currentUser}
-                        setCurrentUser={setCurrentUser}
-                        workouts={workouts}
-                        setWorkouts={setWorkouts} /> */}
                     <UserHomePage currentUser={currentUser} setCurrentUser={setCurrentUser} />
                 </Route>
                 <Route exact path='/signup'>
-                    {/* <Signup setCurrentUser={setCurrentUser} /> */}
                     <Signup handleUserLoginAndSignup={handleUserLoginAndSignup} errors={errors} />
                 </Route>
                 <Route exact path='/login'>
-                    {/* <Login /> */}
                     <Login handleUserLoginAndSignup={handleUserLoginAndSignup} errors={errors} />
                 </Route>
                 <Route exact path='/logout' >
                     <Logout setCurrentUser={setCurrentUser} />
                 </Route>
                 <Route exact path='/workouts'>
-                    {/* <WorkoutsList /> */}
-                    {/* <CreateWorkout currentUser={currentUser} workouts={workouts} setWorkouts={setWorkouts} /> */}
-                    {/* <CreateWorkout currentUser={currentUser} handleNewWorkout={handleNewWorkout} workouts={workouts} setWorkouts={setWorkouts} /> */}
                 </Route>
                 <Route exact path='/workouts/:id'>
-                    {/* <EditWorkoutForm /> */}
-                    {/* <EditWorkout setWorkouts={setWorkouts} /> */}
                 </Route>
-                {/* <Route exact path='/exercises/new'>
-                    <CreateExercise handleNewExercise={handleNewExercise} />
+                <Route exact path='/exercises'>
                 </Route>
-                <Route exact path='/exercises/:id/edit'>
-                    <EditExercise />
-                </Route> */}
+                <Route exact path='/exercises/:id'>
+                </Route>
 
             </Switch>
         </div>
