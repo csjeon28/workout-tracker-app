@@ -8,7 +8,6 @@ const InputForm = styled.form`
   height: 70%;
   width: 100%;
   margin: 1rem 0 2rem 0;
-  align-items: center;
 `;
 
 export default InputForm
