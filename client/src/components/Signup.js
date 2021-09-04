@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import Errors from './Errors'
+import styled from 'styled-components'
+import { MainContainer, HorizontalLine, InputForm, LoginPageBtn, SignInput, SignupPageBtn } from '../styles'
 
 const Signup = ({ errors, handleUserLoginAndSignup }) => {
     const history = useHistory()
@@ -28,42 +30,96 @@ const Signup = ({ errors, handleUserLoginAndSignup }) => {
     }
 
     return (
-        <div className='signup-container'>
-            <hr />
-            <h2>Sign up to track your workouts each day!</h2>
-            <hr />
+        <MainContainer>
+            <HorizontalLine />
+            <LogoText>Sign up to track your workouts each day!</LogoText>
+            <HorizontalLine />
             <br />
-            <ol>Sign-In Requirements:
-                <li>Username must be at least 5 characters</li>
-                <li>Password must contain:
-                    <ul>
-                        <li>at least 1 number</li>
-                        <li>at least 1 lowercase letter</li>
-                        <li>at least 1 uppercase letter</li>
-                        <li>at least 1 symbol</li>
-                        <li>Minimum 8 characters</li>
-                    </ul>
-                </li>
-            </ol>
-            <form className='signup-form' onSubmit={onSubmit}>
-                <label>Create Username:</label>
-                <input onChange={onChange} name='username' type='text' />
-                <br />
-                <label>Create Password:</label>
-                <input onChange={onChange} name='password' type='password' />
-                <br />
-                <label>Password Confirmation:</label>
-                <input onChange={onChange} name='password_confirmation' type='password' />
-                <br />
-                <input type='submit' value='Signup' />
-                <br />
-                <hr />
-                <label>Already have an account?</label>
-                <input type='submit' value='Log In' onClick={() => history.push('/login')} />
-            </form>
+            <List>Sign-In Requirements:
+                <ListItem>Username must be at least 5 characters</ListItem>
+                <ListItem>Password must contain:
+                    <UnorderedList>
+                        <UnorderedItem>At least 1 number</UnorderedItem>
+                        <UnorderedItem>At least 1 lowercase letter</UnorderedItem>
+                        <UnorderedItem>At least 1 uppercase letter</UnorderedItem>
+                        <UnorderedItem>At least 1 symbol</UnorderedItem>
+                        <UnorderedItem>Minimum 8 characters</UnorderedItem>
+                    </UnorderedList>
+                </ListItem>
+            </List>
+            <InputForm onSubmit={onSubmit}>
+                <LabelText>Create Username:</LabelText>
+                <SignInput onChange={onChange} name='username' type='text' />
+                <LabelText>Create Password:</LabelText>
+                <SignInput onChange={onChange} name='password' type='password' />
+                <ConfirmText>Confirm Password:</ConfirmText>
+                <SignInput onChange={onChange} name='password_confirmation' type='password' />
+                <SignupPageBtn type='submit' content='Signup' onClick={() => history.push('/userhomepage')} />
+                <HorizontalLine />
+                <FooterText>Already have an account?</FooterText>
+                <LoginPageBtn type='submit' content='Log In' onClick={() => history.push('/login')} />
+            </InputForm>
             <Errors errors={errors} />
-        </div>
+        </MainContainer>
     )
 }
+
+const LogoText = styled.h2`
+  margin: 0.1rem 0 -0.8rem 0;
+  color: navy;
+  letter-spacing: 0.5rem;
+  font-size: 1.1rem;
+  padding: 1rem;
+  text-shadow: 1px 1px 1.3px #062c9e;
+  text-align: center;
+`;
+
+const List = styled.ol`
+  margin: -0.3rem 0 0 1rem;
+  text-shadow: 1px 1px 1px #062c9e;
+  letter-spacing: 0.4rem;
+  font-size: 1rem;
+  text-align: left;
+`;
+
+const ListItem = styled.li`
+  margin: 0.4rem 0 0.5rem 0.1rem;
+  text-shadow: 1px 1px 1px #7e7e9c;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  font-size: 0.8rem;
+  text-align: left;
+`;
+
+const UnorderedList = styled.ul`
+  list-style: square;
+`;
+
+const UnorderedItem = styled.li`
+  margin: 0.2rem 0 0.15rem 1rem;
+  text-shadow: 1px 1px 1px #7e7e9c;
+  text-transform: none;
+  letter-spacing: 0.1rem;
+  font-size: 0.8rem;
+  text-align: left;
+`;
+
+const LabelText = styled.h5`
+  margin: 0.4rem 0 0 0;
+  color: navy;
+`;
+
+const ConfirmText = styled.h5`
+  margin: 0.4rem 0 0 0;
+  color: navy;
+  font-style: italic;
+`;
+
+const FooterText = styled.h5`
+  margin: 0.4rem 0 0 0;
+  color: white;
+  letter-spacing: 0.2rem;
+  text-shadow: 1px 1px 1.3px #ffe7d1;
+`;
 
 export default Signup
