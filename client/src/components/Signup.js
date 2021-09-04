@@ -23,14 +23,28 @@ const Signup = ({ errors, handleUserLoginAndSignup }) => {
             body: JSON.stringify(state)
         }
         fetch('/users', config)
-            .then(res => res.json())
+            .then(resp => resp.json())
             .then(data => handleUserLoginAndSignup(data))
-        !errors ? history.push('/') : history.push('/signup')
     }
 
     return (
         <div className='signup-container'>
             <hr />
+            <h2>Sign up to track your workouts each day!</h2>
+            <hr />
+            <br />
+            <ol>Sign-In Requirements:
+                <li>Username must be at least 5 characters</li>
+                <li>Password must contain:
+                    <ul>
+                        <li>at least 1 number</li>
+                        <li>at least 1 lowercase letter</li>
+                        <li>at least 1 uppercase letter</li>
+                        <li>at least 1 symbol</li>
+                        <li>Minimum 8 characters</li>
+                    </ul>
+                </li>
+            </ol>
             <form className='signup-form' onSubmit={onSubmit}>
                 <label>Create Username:</label>
                 <input onChange={onChange} name='username' type='text' />
@@ -42,6 +56,10 @@ const Signup = ({ errors, handleUserLoginAndSignup }) => {
                 <input onChange={onChange} name='password_confirmation' type='password' />
                 <br />
                 <input type='submit' value='Signup' />
+                <br />
+                <hr />
+                <label>Already have an account?</label>
+                <input type='submit' value='Log In' onClick={() => history.push('/login')} />
             </form>
             <Errors errors={errors} />
         </div>
