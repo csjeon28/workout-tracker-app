@@ -44,8 +44,8 @@ const MainContainer = styled.div`
     height: 50vh;
   }
   @media only screen and (min-width: 1280px) {
-    width: 30vw;
-    height: 80vh;
+    width: 35vw;
+    height: 92vh;
   }
 `;
 
