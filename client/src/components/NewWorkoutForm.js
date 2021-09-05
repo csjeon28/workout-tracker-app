@@ -17,15 +17,13 @@ const NewWorkoutForm = ({ addWorkout }) => {
     }
 
     return (
-        <div>
-            <NewInputForm onSubmit={handleSubmit}>
-                <FormText>Date:</FormText>
-                <NewInput name='date' type='date' onChange={handleChange} />
-                <FormText>Weight:</FormText>
-                <NewInput name='weight' type='number' onChange={handleChange} />
-                <AddBtn type='submit' content='Add Workout' />
-            </NewInputForm>
-        </div>
+        <NewInputForm onSubmit={handleSubmit}>
+            <FormText>Date:</FormText>
+            <NewInput name='date' type='date' onChange={handleChange} />
+            <FormText>Weight:</FormText>
+            <NewInput name='weight' type='number' onChange={handleChange} />
+            <AddBtn type='submit' content='Add Workout' />
+        </NewInputForm>
     )
 }
 
