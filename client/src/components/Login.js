@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import Errors from './Errors'
 import styled from 'styled-components'
-import { MainContainer, ErrorStyle, Input, InputForm, HorizontalLine, LoginButton, LoginPageBtn } from '../styles'
+import { MainContainer, Input, InputForm, HorizontalLine, LoginButton, LoginPageBtn } from '../styles'
 
 const Login = ({ errors, handleUserLoginAndSignup }) => {
     const history = useHistory()
@@ -44,9 +44,7 @@ const Login = ({ errors, handleUserLoginAndSignup }) => {
                 <SignUpText>New User?</SignUpText>
                 <LoginPageBtn type='submit' content='Sign Up' onClick={() => history.push('/signup')} />
             </InputForm>
-            <ErrorStyle>
-                <Errors errors={errors} />
-            </ErrorStyle>
+            <Errors errors={errors} />
         </MainContainer>
     )
 }
