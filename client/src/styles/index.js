@@ -16,6 +16,7 @@ import SignupButton from './SignupButton'
 import SignInput from './SignInput'
 import SignupPageBtn from './SignupPageBtn'
 import SmallContainer from './SmallContainer'
+import ScrollBar from './ScrollBar'
 
 export {
     AddBtn,
@@ -35,5 +36,6 @@ export {
     SignupButton,
     SignInput,
     SignupPageBtn,
-    SmallContainer
+    SmallContainer,
+    ScrollBar
 }
