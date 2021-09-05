@@ -8,7 +8,7 @@ const NewInputStyle = styled.input`
   background: rgba(255, 255, 255, 0.24);
   box-shadow: 0 2px 4px 0 rgba(31, 38, 135, 0.37);
   border-radius: 0.5rem;
-  width: 38%;
+  width: 37%;
   height: 1rem;
   padding: 0.7rem;
   border: none;
