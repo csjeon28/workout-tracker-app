@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Workout from './Workout'
 import NewWorkoutForm from './NewWorkoutForm'
+import { SmallContainer } from '../styles'
 
 const WorkoutsList = () => {
     const [workouts, setWorkouts] = useState([])
@@ -28,7 +29,10 @@ const WorkoutsList = () => {
 
     return (
         <div>
-            <NewWorkoutForm addWorkout={addWorkout} />
+            <SmallContainer>
+                <NewWorkoutForm addWorkout={addWorkout} />
+            </SmallContainer>
+            <br />
             {workoutList}
         </div>
     )
