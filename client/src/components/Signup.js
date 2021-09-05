@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import Errors from './Errors'
 import styled from 'styled-components'
-import { MainContainer, HorizontalLine, InputForm, LoginPageBtn, SignInput, SignupPageBtn } from '../styles'
+import { ErrorStyle, MainContainer, HorizontalLine, InputForm, LoginPageBtn, LogoText, SignInput, SignupPageBtn } from '../styles'
 
 const Signup = ({ errors, handleUserLoginAndSignup }) => {
   const history = useHistory()
@@ -66,16 +66,6 @@ const Signup = ({ errors, handleUserLoginAndSignup }) => {
   )
 }
 
-const LogoText = styled.h2`
-  margin: 0.1rem 0 -0.8rem 0;
-  color: navy;
-  letter-spacing: 0.5rem;
-  font-size: 1.1rem;
-  padding: 1rem;
-  text-shadow: 1px 1px 1.3px #062c9e;
-  text-align: center;
-`;
-
 const List = styled.ol`
   margin: -0.3rem 0 0 1rem;
   text-shadow: 1px 1px 1px #062c9e;
@@ -122,15 +112,6 @@ const FooterText = styled.h5`
   color: white;
   letter-spacing: 0.2rem;
   text-shadow: 1px 1px 1.3px #ffe7d1;
-`;
-
-const ErrorStyle = styled.div`
-  margin: 0.4rem 0 0.5rem 3rem;
-  text-shadow: 1px 1px 1px #7e7e9c;
-  font-weight: 500;
-  letter-spacing: 0.1rem;
-  font-size: 0.8rem;
-  text-align: left;
 `;
 
 export default Signup
