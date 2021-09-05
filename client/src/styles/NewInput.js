@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
-function NewInput({ type, onChange, name }) {
-    return <NewInputStyle type={type} onChange={onChange} name={name} />
+function NewInput({ type, onChange, name, value }) {
+    return <NewInputStyle type={type} onChange={onChange} name={name} value={value} />
 }
 
 const NewInputStyle = styled.input`
