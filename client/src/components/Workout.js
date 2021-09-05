@@ -5,7 +5,6 @@ const Workout = ({ workout, workouts, setWorkouts }) => {
     const [editing, setEditing] = useState(false)
 
     const deleteWorkout = (id) => {
-        debugger
         fetch(`/workouts/${workout.id}`, {
             method: 'DELETE'
         })
