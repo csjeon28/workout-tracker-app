@@ -5,9 +5,9 @@ const NewInputForm = styled.form`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  align-items: left;
+  align-items: baseline;
   height: 28%;
-  margin: 0.6rem 0.5rem 1.5rem -0.1rem;
+  margin: 0.5rem 0 1.5rem -0.1rem;
 `;
 
 export default NewInputForm
