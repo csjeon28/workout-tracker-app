@@ -4,7 +4,7 @@ const SmallContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 7vh;
+  height: 8.5vh;
   width: 34vw;
   background: rgba(255, 255, 255, 0.15);
   box-shadow: 0 8px 30px 0 rgba(31, 38, 135, 0.37);
