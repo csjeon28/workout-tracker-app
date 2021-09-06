@@ -15,10 +15,10 @@
 ### Workout Model
 - User can enter the date
 - User can input weight
-- User can view all exercises per date
 * belongs_to :user
 * has_many :exercises
 #### Stretch Goals 
+- User can view all exercises per date
 - User can view the week and click into each date to view
 
 
@@ -27,6 +27,6 @@
 - User can edit exercise
 - User can delete exercise
 - User can view exercise
-- User can add calories
+- User can add calories and duration
 * belongs_to :user
 * belongs_to :workout
