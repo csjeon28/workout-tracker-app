@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import styled from 'styled-components'
+import { NewInput, EditBtn, DeleteBtn } from '../styles'
 
 const EditExerciseForm = ({ exercise, setExercises, exercises, setEditing }) => {
     const { id } = exercise
-    const history = useHistory()
     const [form, setForm] = useState({ name: exercise.name, calories: exercise.calories, duration: exercise.duration })
 
     const handleChange = (e) => {
@@ -31,20 +31,31 @@ const EditExerciseForm = ({ exercise, setExercises, exercises, setEditing }) => 
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <label>Name</label>
-                <input name='name' id='name' type='text' onChange={handleChange} value={form.name} />
-                <label>Active Calories</label>
-                <input name='calories' id='calories' type='text' onChange={handleChange} value={form.calories} />
-                <label>Duration(in minutes)</label>
-                <input name='duration' id='duration' type='text' onChange={handleChange} value={form.duration} />
-                <input type='submit' value='Add Edit' />
-                <button onClick={() => setEditing(false)}>Cancel</button>
-                <button onClick={() => history.push('/userhomepage')}>Go back to Workouts</button>
-            </form>
-        </div>
+        <EditForm onSubmit={handleSubmit}>
+            <FormText>Name</FormText>
+            <NewInput name='name' type='text' onChange={handleChange} value={form.name} />
+            <FormText>Active Calories</FormText>
+            <NewInput name='calories' type='text' onChange={handleChange} value={form.calories} />
+            <FormText>Duration(in minutes)</FormText>
+            <NewInput name='duration' type='text' onChange={handleChange} value={form.duration} />
+            <EditBtn type='submit' content='Add Edit' />
+            <DeleteBtn onClick={() => setEditing(false)} content='Cancel' />
+        </EditForm>
     )
 }
+
+const FormText = styled.h5`
+  margin: 1rem 0 0 0;
+  text-shadow: 1px 1px 1px #7e7e9c;
+  letter-spacing: 0.05rem;
+  font-size: 0.8rem;
+`;
+
+const EditForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 80%;
+`;
 
 export default EditExerciseForm
