@@ -15,8 +15,8 @@ const MainContainer = styled.div`
   text-transform: uppercase;
   letter-spacing: 0.4rem;
   @media only screen and (max-width: 320px) {
-    width: 80vw;
-    height: 90vh;
+    width: 90vw;
+    height: 80vh;
     hr {
       margin-bottom: 0.3rem;
     }
@@ -25,27 +25,27 @@ const MainContainer = styled.div`
     }
   }
   @media only screen and (min-width: 360px) {
-    width: 80vw;
-    height: 90vh;
+    width: 90vw;
+    height: 80vh;
     h4 {
       font-size: small;
     }
   }
   @media only screen and (min-width: 411px) {
-    width: 80vw;
-    height: 90vh;
+    width: 90vw;
+    height: 80vh;
   }
   @media only screen and (min-width: 768px) {
-    width: 80vw;
+    width: 90vw;
     height: 80vh;
   }
   @media only screen and (min-width: 1024px) {
-    width: 70vw;
-    height: 50vh;
+    width: 50vw;
+    height: 90vh;
   }
   @media only screen and (min-width: 1280px) {
     width: 35vw;
-    height: 92vh;
+    height: 90vh;
   }
 `;
 

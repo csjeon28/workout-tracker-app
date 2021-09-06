@@ -8,14 +8,14 @@ const AddExerciseBtnStyle = styled.button`
   background: linear-gradient(to right, #ffffff 0%, #ffe7d1 70%);
   text-transform: uppercase;
   letter-spacing: 0.2rem;
-  width: 60%;
+  width: 45%;
   height: 1.1rem;
   border: none;
   border-radius: 2rem;
   cursor: pointer;
   color: #2b3099;
   font-weight: bold;
-  margin: 0.1rem 0 0 5.8rem;
+  margin: 0.5rem 0 0 4.4rem;
 `;
 
 export default AddExerciseBtn
