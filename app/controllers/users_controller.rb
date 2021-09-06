@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-    # skip_before_action :authorize, only: [:create, :show, :index]
-    # before_action :authorize, only: [:show]
     skip_before_action :authorize, only: [:create, :index]
 
     #---------GET /users (users#index)---------
@@ -13,7 +11,8 @@ class UsersController < ApplicationController
     def show
       user = User.find_by(id: session[:user_id])
       if user
-        render json: {user: user, workouts: user.workouts, exercises: user.exercises}, status: :ok
+        # render json: {user: user, workouts: user.workouts, exercises: user.exercises}, status: :ok
+        render json: user, status: :ok
       else
         render json: {errors: ["Not Authorized"]}, status: :unauthorized
       end
@@ -22,8 +21,13 @@ class UsersController < ApplicationController
     #--------POST /users (users#create)---------
     def create
       user = User.create!(user_params)
-      session[:user_id] = user.id
-      render json: {user: user, workouts: user.workouts, exercises: user.exercises}, status: :created
+      if user.valid?
+        session[:user_id] = user.id
+      # render json: {user: user, workouts: user.workouts, exercises: user.exercises}, status: :created
+        render json: user, status: :created
+      else
+        render json: {errors: user.errors.full_messages}, status: :unprocessable_entity
+      end
     end
   
     private
