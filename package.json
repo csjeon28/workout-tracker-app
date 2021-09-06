@@ -11,6 +11,9 @@
     "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
   },
   "dependencies": {
-    "eslint-plugin-react-hooks": "^4.2.0"
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "react-datepicker": "^4.2.1",
+    "react-hook-form": "^7.14.2",
+    "react-widgets": "^5.2.0"
   }
 }
