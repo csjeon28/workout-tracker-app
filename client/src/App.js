@@ -5,7 +5,7 @@ import Login from './components/Login'
 import Signup from './components/Signup'
 import Logout from './components/Logout'
 import Home from './components/Home'
-// import ExerciseList from './components/ExerciseList'
+import ExerciseList from './components/ExerciseList'
 
 function App() {
     const history = useHistory()
@@ -66,9 +66,9 @@ function App() {
                 <Route exact path='/logout' >
                     <Logout setCurrentUser={setCurrentUser} />
                 </Route>
-                {/* <Route exact path='/exercises'>
+                <Route exact path='/exercises'>
                     <ExerciseList currentUser={currentUser} setCurrentUser={setCurrentUser} />
-                </Route> */}
+                </Route>
             </Switch>
         </div>
     )
