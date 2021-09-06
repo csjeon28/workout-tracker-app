@@ -56,7 +56,7 @@ const BackBtn = styled.button`
   cursor: pointer;
   color: #ffe7d1;
   font-weight: 600;
-  margin: 0.8em 0 0 0;
+  margin: 0.8em 0 0 8.5rem;
 `;
 
 
