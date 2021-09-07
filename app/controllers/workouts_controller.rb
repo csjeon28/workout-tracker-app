@@ -31,6 +31,7 @@ class WorkoutsController < ApplicationController
 
     #-----------PATCH /workouts/:id (workouts#update)-------------
     def update
+        # byebug
         workout = Workout.find(params[:id])
         if workout[:user_id] == session[:user_id]
             workout.update(workout_params)
@@ -52,7 +53,7 @@ class WorkoutsController < ApplicationController
     private
 
     def show_workouts
-        @current_user.workouts
+        @current_user.workouts.order("date DESC")
     end
 
     def find_workout
