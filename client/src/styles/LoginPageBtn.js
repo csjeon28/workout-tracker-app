@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 function LoginPageBtn({ type, content, onClick }) {
-    return <LoginPageBtnStyle type={type} onClick={onClick}>{content}</LoginPageBtnStyle>
+  return <LoginPageBtnStyle type={type} onClick={onClick}>{content}</LoginPageBtnStyle>
 }
 
 const LoginPageBtnStyle = styled.button`
