@@ -16,7 +16,7 @@ const EditExerciseForm = ({ exercise, setExercises, exercises, setEditing }) => 
 
         const config = {
             method: 'PATCH',
-            header: {
+            headers: {
                 'Content-Type': 'application/json',
                 'Accepts': 'application/json'
             },
