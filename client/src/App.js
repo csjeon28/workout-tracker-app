@@ -11,6 +11,7 @@ function App() {
     const history = useHistory()
     const [currentUser, setCurrentUser] = useState(null)
     const [errors, setErrors] = useState([])
+    // const [exercises, setExercises] = useState([])
 
     const handleUserLoginAndSignup = (data) => {
         data.errors ? setErrors(data.errors) : setCurrentUser(data.username)
@@ -23,7 +24,7 @@ function App() {
     // const handleNewExercise = (data) => {
     //     data.errors ? setErrors(data.errors) : setExercises([...exercises, data])
     //     if (!data.errors) {
-    //         history.push('/userhomepage')
+    //         history.push('/exercises')
     //         setErrors([])
     //     }
     // }
@@ -31,13 +32,6 @@ function App() {
     const stateInit = () => {
         checkSessionId()
     }
-
-    // const fetchExercises = () => {
-    //     fetch('/exercises')
-    //         .then(resp => resp.json())
-    //         // .then(data => console.log(data))
-    //         .then(data => setExercises(data.exercises))
-    // }
 
     const checkSessionId = () => {
         fetch('/me')
