@@ -12,11 +12,13 @@ class ExercisesController < ApplicationController
 
     #-----------POST /exercises (exercises#create)------------
     def create
-        if session[:user_id]
-            exercise = show_exercises.create!(exercise_params)
+        exercise = show_exercises.build(exercise_params)
+        exercise.user = @current_user
+        if exercise.valid?
+            exercise.save
             render json: exercise, status: :created
         else
-            render json: { errors: ['You must be logged in to create a exercise'] }, status: :unauthorized
+            render json: { errors: exercise.errors.full_messages }, status: :unauthorized
         end
     end
 

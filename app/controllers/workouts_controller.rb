@@ -4,6 +4,7 @@ class WorkoutsController < ApplicationController
 
     #----------GET /workouts (workouts#index)------------
     def index
+        # checking if session[:user_id] exists and displaying user.workouts
         if session[:user_id]
             workouts = show_workouts
             render json: workouts, include: [:exercise]
@@ -12,12 +13,15 @@ class WorkoutsController < ApplicationController
 
     #-----------POST /workouts (workouts#create)------------
     def create
-        if session[:user_id]
-            workout = show_workouts.create(workout_params)
-            workout.update!(user_id: session[:user_id])
+        workout = Workout.new(workout_params)
+        workout.user = @current_user
+        if workout.valid?
+            # workout = show_workouts.create(workout_params)
+            # workout.update!(user_id: session[:user_id])
+            workout.save
             render json: {workout: workout}, status: :created
         else
-            render json: { errors: ['You must be logged in to create a workout'] }, status: :unauthorized
+            render json: { errors: workout.errors.full_messages }, status: :unauthorized
         end
     end
 

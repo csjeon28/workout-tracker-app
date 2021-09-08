@@ -9,8 +9,8 @@ class UsersController < ApplicationController
 
     #--------GET /users/:id (users#show)---------
     def show
-      # user = User.find_by(id: session[:user_id])
-      user = User.find_by(id: params[:id])
+      user = User.find_by(id: session[:user_id])
+      # user = User.find_by(id: params[:id])
       if user
         render json: user, status: :ok
       else
@@ -20,7 +20,6 @@ class UsersController < ApplicationController
 
     #--------POST /users (users#create)---------
     def create
-      # user = User.create!(user_params)
       user = User.new(user_params)
       if user.valid?
         session[:user_id] = user.id
