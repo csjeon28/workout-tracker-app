@@ -16,9 +16,9 @@ const WorkoutsList = ({ errors, setErrors }) => {
     }, [])
 
     const handleNewWorkout = (data) => {
-        data.errors ? setErrors(data.errors) : setWorkouts([...workouts, data])
+        data.errors ? setErrors(data.errors) : setWorkouts([data.workout, ...workouts])
         if (!data.errors) {
-            history.push('/workouts')
+            history.push('/userhomepage')
             setErrors([])
         }
     }
@@ -27,13 +27,13 @@ const WorkoutsList = ({ errors, setErrors }) => {
         const config = {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accepts': 'application/json'
             },
             body: JSON.stringify(data)
         }
         fetch('/workouts', config)
             .then(resp => resp.json())
-            // .then(() => setWorkouts([...workouts, data]))
             .then(data => handleNewWorkout(data))
     }
 
