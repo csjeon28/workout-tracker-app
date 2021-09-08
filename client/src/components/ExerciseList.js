@@ -3,9 +3,11 @@ import { useHistory } from 'react-router'
 import NavBar from './NavBar'
 import Exercise from './Exercise'
 import AddExerciseForm from './AddExerciseForm'
+import Errors from './Errors'
 import styled from 'styled-components'
 import { ExerciseContainer, ScrollBar } from '../styles'
 
+// const ExerciseList = ({ handleNewExercise, exercises, setExercises, currentUser, setCurrentUser }) => {
 const ExerciseList = ({ currentUser, setCurrentUser }) => {
     const history = useHistory()
     const [exercises, setExercises] = useState([])
@@ -27,6 +29,7 @@ const ExerciseList = ({ currentUser, setCurrentUser }) => {
         fetch('/exercises', config)
             .then(resp => resp.json())
             .then(() => setExercises([...exercises, data]))
+        // .then(data => handleNewExercise(data))
     }
 
     const exercisesList = exercises.map((exercise, index) => <Exercise key={index} exercise={exercise} exercises={exercises} setExercises={setExercises} />)
