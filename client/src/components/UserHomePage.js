@@ -3,14 +3,14 @@ import WorkoutsList from './WorkoutsList'
 import styled from 'styled-components'
 import { MainContainer, HorizontalLine } from '../styles'
 
-const UserHomePage = ({ currentUser }) => {
+const UserHomePage = ({ errors, setErrors, currentUser }) => {
 
     return (
         <MainContainer>
             <NavBar currentUser={currentUser} />
             <LogoText>Your Workout Tracker</LogoText>
             <HorizontalLine />
-            <WorkoutsList />
+            <WorkoutsList errors={errors} setErrors={setErrors} />
         </MainContainer>
     )
 }
