@@ -4,29 +4,29 @@ import { AddExerciseBtn } from '../styles'
 
 const AddExerciseForm = ({ addExercise }) => {
 
-    const [form, setForm] = useState({})
+  const [form, setForm] = useState({})
 
-    const handleChange = (e) => {
-        const { name, value } = e.target
-        setForm({ ...form, [name]: value })
-    }
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setForm({ ...form, [name]: value })
+  }
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        addExercise(form)
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    addExercise(form)
+  }
 
-    return (
-        <NewExerciseForm onSubmit={handleSubmit}>
-            <FormText>Name</FormText>
-            <ExerciseInput name='name' type='text' onChange={handleChange} />
-            <FormText>Active Calories</FormText>
-            <ExerciseInput name='calories' type='number' onChange={handleChange} />
-            <FormText>Duration(in minutes)</FormText>
-            <ExerciseInput name='duration' type='number' onChange={handleChange} />
-            <AddExerciseBtn type='submit' content='Add Exercise' />
-        </NewExerciseForm>
-    )
+  return (
+    <NewExerciseForm onSubmit={handleSubmit}>
+      <FormText>Name</FormText>
+      <ExerciseInput name='name' type='text' onChange={handleChange} />
+      <FormText>Active Calories</FormText>
+      <ExerciseInput name='calories' type='number' onChange={handleChange} />
+      <FormText>Duration(in minutes)</FormText>
+      <ExerciseInput name='duration' type='number' onChange={handleChange} />
+      <AddExerciseBtn type='submit' content='Add Exercise' />
+    </NewExerciseForm>
+  )
 }
 
 const FormText = styled.h5`
@@ -43,6 +43,7 @@ const NewExerciseForm = styled.form`
   align-items: center;
   justify-content: space-between;
   height: 28%;
+  width: 65%;
   margin: 0.1rem 6rem 0 2rem;
 `;
 
