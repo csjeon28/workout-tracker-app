@@ -7,7 +7,7 @@ const NavBar = ({ currentUser }) => {
   return (
     <Wrapper>
       <Nav>
-        <Logo>{currentUser ? `Signed in as: ${currentUser}` : null}</Logo>
+        <Logo>{currentUser ? `Signed in as: ${currentUser.username}` : null}</Logo>
         <Button as={Link} to='/login' variant='outline'>Switch User?</Button>
         <Button as={Link} to='/logout' variant='fill'>Log Out</Button>
       </Nav>
