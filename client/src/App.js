@@ -55,7 +55,7 @@ function App() {
                 <Route exact path='/' component={Home} />
                 <Route exact path='/home' component={Home} />
                 <Route exact path='/userhomepage'>
-                    <UserHomePage currentUser={currentUser} />
+                    <UserHomePage currentUser={currentUser} errors={errors} setErrors={setErrors} />
                 </Route>
                 <Route exact path='/signup'>
                     <Signup handleUserLoginAndSignup={handleUserLoginAndSignup} errors={errors} />
