@@ -7,7 +7,7 @@ const NewInputForm = styled.form`
   justify-content: space-around;
   align-items: baseline;
   height: 28%;
-  margin: 0.5rem 0 1.5rem -0.1rem;
+  margin: 0.5rem 0 1.5rem 0.4rem;
 `;
 
 export default NewInputForm

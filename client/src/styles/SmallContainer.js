@@ -14,6 +14,40 @@ const SmallContainer = styled.div`
   color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 0.2rem;
+  margin: 0 0 0 2rem;
+    @media only screen and (max-width: 320px) {
+    width: 90vw;
+    height: 14vh;
+    hr {
+      margin-bottom: 0.3rem;
+    }
+    h4 {
+      font-size: small;
+    }
+  }
+  @media only screen and (min-width: 360px) {
+    height: 12vh;
+    width: 70vw;
+    h4 {
+      font-size: small;
+    }
+  }
+  @media only screen and (min-width: 411px) {
+    height: 11vh;
+    width: 84vw;
+  }
+  @media only screen and (min-width: 768px) {
+    height: 10vh;
+    width: 58vw;
+  }
+  @media only screen and (min-width: 1024px) {
+    height: 8.5vh;
+    width: 44vw;
+  }
+  @media only screen and (min-width: 1280px) {
+    height: 8.5vh;
+    width: 34vw;
+  }
 `;
 
 export default SmallContainer

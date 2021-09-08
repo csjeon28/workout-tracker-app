@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 function AddExerciseBtn({ type, content }) {
-    return <AddExerciseBtnStyle type={type}>{content}</AddExerciseBtnStyle>
+  return <AddExerciseBtnStyle type={type}>{content}</AddExerciseBtnStyle>
 }
 
 const AddExerciseBtnStyle = styled.button`
@@ -9,7 +9,7 @@ const AddExerciseBtnStyle = styled.button`
   text-transform: uppercase;
   letter-spacing: 0.2rem;
   width: 45%;
-  height: 1.1rem;
+  height: 2.1rem;
   border: none;
   border-radius: 2rem;
   cursor: pointer;
