@@ -36,10 +36,9 @@ const ExerciseText = styled.h3`
 
 const ExerciseList = styled.div`
 display: flex;
-align-items: flex-end;
+align-items: flex-start;
 flex-direction: column;
-height: 10vh;
-width: 32vw;
+height: 11vh;
 background: rgba(255, 255, 255, 0.15);
 box-shadow: 0 4px 4px 0 rgba(31, 38, 135, 0.37);
 backdrop-filter: blur(12px);

@@ -33,8 +33,8 @@ const ExerciseList = ({ currentUser, setCurrentUser }) => {
 
     return (
         <div>
+            <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
             <ExerciseContainer>
-                <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
                 <AddExerciseForm addExercise={addExercise} />
             </ExerciseContainer>
             <BackBtn onClick={() => history.push('/userhomepage')}>Go back to Workouts</BackBtn>
@@ -49,14 +49,14 @@ const BackBtn = styled.button`
   background: linear-gradient(to right, #2b3099 20%, #73a8e6 100%);
   text-transform: uppercase;
   letter-spacing: 0.1rem;
-  width: 50%;
+  width: 40%;
   height: 1.5rem;
   border: none;
   border-radius: 2rem;
   cursor: pointer;
   color: #ffe7d1;
   font-weight: 600;
-  margin: 0.8em 0 0 8.5rem;
+  margin: 0.8em 0 0 3rem;
 `;
 
 
