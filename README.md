@@ -2,7 +2,7 @@
 
 A full-stack application with a React frontend and a Rails backend where users can track their workouts/exercises. I love to exercise and keep track of my workouts, however some applications out there are just too complicating, so I wanted to create an application to be able to track my workouts tailored to my needs. 
 
-<img src="/client/src/images/workout_tracker_welcomepage.jpg" alt="Welcome Page">
+<img src="/client/src/images/workout_tracker_welcome_page.jpeg" alt="Welcome Page">
 
 ### Tech Used:
 ### FRONTEND:
