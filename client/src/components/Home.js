@@ -14,9 +14,22 @@ const Home = () => {
             <LogIn onClick={() => history.push('/login')}>Log In</LogIn>
             <Instructions>Or click below to Sign Up</Instructions>
             <SignUp onClick={() => history.push('/signup')}>Sign Up</SignUp>
+            <CopyrightText>Copyright © </CopyrightText>
+            <CopyrightLink href="https://cj-workout-tracker.herokuapp.com/">Workout Tracker {new Date().getFullYear()}</CopyrightLink>
         </MainContainer>
     )
 }
+
+const CopyrightText = styled.h6`
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+`;
+
+const CopyrightLink = styled.link`
+  color: white;
+  text-transform: uppercase;
+`;
 
 const LogoText = styled.h2`
   margin: 3rem 0 1rem 0;
